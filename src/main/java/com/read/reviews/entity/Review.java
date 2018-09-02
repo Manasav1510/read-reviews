@@ -1,5 +1,7 @@
 package com.read.reviews.entity;
 
+import java.time.LocalDate;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,7 +15,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Review {
 	@Id
-	private Long reviewId;
+	private int reviewId;
 	private String userId;
 	private String description;
+	private LocalDate date;
 }

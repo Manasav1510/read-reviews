@@ -18,7 +18,6 @@ public class BookServiceImpl implements BookService {
 	
 	@Autowired
 	public BookServiceImpl(BookRepository bookRespository) {
-		super();
 		this.bookRespository = bookRespository;
 		
 	}
@@ -29,8 +28,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Optional<Book> getBookById(Long id) {
-		return bookRespository.findByBookId(id);
+	public Optional<Book> getBookByIsbn(String isbn) {
+		return bookRespository.findByIsbn(isbn);
 	}
 
 	@Override
@@ -47,5 +46,40 @@ public class BookServiceImpl implements BookService {
 	public Optional<Book> getBookByTitle(String title) {
 		return bookRespository.findByTitle(title);
 	}
+
+	@Override
+	public Optional<List<Book>> searchBookByAuthorOrTitleOrPublisherOrIsbn(String searchValue) {
+		return bookRespository.findByAuthorNameOrTitleOrPublisherOrIsbn(searchValue);
+	}
+
+	@Override
+	public void deleteBook(String value) {
+			bookRespository.deleteByAuthorNameOrTitleOrPublisher(value,value,value);
+			
+	}
+
+	@Override
+	public void deleteAllBook() {
+		bookRespository.deleteAll();
+		
+	}
+
+	@Override
+	public Optional<List<Book>> getBookByAuthorName(String author) {
+		return bookRespository.findByAuthorName(author);
+	}
+
+	@Override
+	public Optional<List<Book>> getBookByPublisher(String publisher) {
+		return bookRespository.findByPublisher(publisher);
+	}
+
+	@Override
+	public Optional<Book> getBookById(String isbn) {
+		return bookRespository.findById(isbn);
+	}
+	
+	
+	
 
 }

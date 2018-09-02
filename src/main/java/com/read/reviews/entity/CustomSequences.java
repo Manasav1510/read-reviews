@@ -7,16 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection="author")
+@Document(collection = "customSequences")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Author {
-	@Id
-	private String authorId;
-	private String firstName;
-	private String lastName;
-	private String city;
-	private String email;
-
+public class CustomSequences {
+    @Id
+    private String id;
+    private int seq;
 }
